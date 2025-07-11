@@ -9,24 +9,109 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      background: #fff;
+      padding: 30px 36px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 420px;
+    }
+    .rules {
+      margin-bottom: 18px;
+      font-size: 17px;
+      color: #222;
+      text-align: left;
+    }
+    .rules-title {
+      color: #d90429;
+      font-weight: bold;
+      text-align: center;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .rules ul {
+      padding-left: 22px;
+      margin: 10px 0 0 0;
+    }
+    .rules li {
+      margin-bottom: 8px;
+    }
+    .warning {
+      color: #d90429;
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 15px;
+      text-align: center;
+    }
+    .checkbox-area {
+      margin-bottom: 18px;
+      font-size: 15px;
+      width: 100%;
+      text-align: left;
     }
     .button {
-      padding: 20px 40px;
-      font-size: 24px;
+      padding: 15px 36px;
+      font-size: 20px;
       background: #222;
       color: #fff;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
+      transition: background 0.2s;
+      width: 100%;
+    }
+    .button:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+    .footer {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #d90429;
+      font-weight: bold;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <button class="button" onclick="bukaPanel()">Buka Panel Team X-ID</button>
+  <div class="container">
+    <div class="rules">
+      <div class="rules-title">❗PERATURAN PANEL TEAM X ID ❗</div>
+      <ul>
+        <li>1. TIDAK BOLEH INTIP PANEL ORANG</li>
+        <li>2. TIDAK BOLEH OTAK ATIK PANEL ORANG</li>
+        <li>3. TIDAK BOLEH NYURI SC ORANG</li>
+        <li>4. DILARANG MENGGUNAKAN SCRIP DddoS/Dll YG BERBAHAYA UNTUK SERVER PANEL</li>
+        <li>5. ❗Lapor ke Admin jika ada eror atau bug di server panel ❗</li>
+        <li>6. Respect Jadwal Maintance <br>
+        Jika panel sedang down/pembaruan atau pembersihan server harap bersabar dan menunggu info dari admin server ❗️</li>
+      </ul>
+      <div class="warning">
+        ⚠️ JIKA DI LANGGAR SEBANYAK 2 KALI KAMI TIDAK BERTANGGUNG JAWAB JIKA SERVER ANDA DI HAPUS OLEH DEV ‼️
+      </div>
+    </div>
+    <div class="checkbox-area">
+      <input type="checkbox" id="agree" onclick="toggleButton()">
+      <label for="agree">Saya menyetujui peraturan di atas</label>
+    </div>
+    <button class="button" id="loginBtn" onclick="bukaPanel()" disabled>Lanjut Login Panel</button>
+    <div class="footer">🚫PATUHI PERATURAN🚫</div>
+  </div>
   <script>
+    function toggleButton() {
+      var checkBox = document.getElementById('agree');
+      var btn = document.getElementById('loginBtn');
+      btn.disabled = !checkBox.checked;
+    }
+
     function bukaPanel() {
-      // Link disembunyikan, tapi user tetap akan diarahkan
       var link = atob("aHR0cHM6Ly9wYW5lbC10ZWFteGlkb2ZmaWNpYWxsLnZpbm5wcml2YXQuY29t");
       window.open(link, "_blank");
     }
