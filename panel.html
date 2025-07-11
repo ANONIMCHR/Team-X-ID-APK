@@ -23,6 +23,13 @@
   </style>
 </head>
 <body>
-  <a class="button" href="https://panel-teamxidofficiall.vinnprivat.com" target="_blank">Buka Panel Team X-ID</a>
+  <button class="button" onclick="bukaPanel()">Buka Panel Team X-ID</button>
+  <script>
+    function bukaPanel() {
+      // Link disembunyikan, tapi user tetap akan diarahkan
+      var link = atob("aHR0cHM6Ly9wYW5lbC10ZWFteGlkb2ZmaWNpYWxsLnZpbm5wcml2YXQuY29t");
+      window.open(link, "_blank");
+    }
+  </script>
 </body>
 </html>
