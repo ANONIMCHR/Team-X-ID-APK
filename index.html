@@ -91,7 +91,7 @@
       const pass = document.getElementById("password").value;
 
       try {
-        const res = await fetch("https://raw.githubusercontent.com/ANONIMCHR/Project-apk1/main/Login/Login.json");
+        const res = await fetch("https://raw.githubusercontent.com/ANONIMCHR/teamxid.github.io/refs/heads/main/Login.json");
         const data = await res.json();
 
         const match = data.find(u => u.username === user && u.password === pass);
