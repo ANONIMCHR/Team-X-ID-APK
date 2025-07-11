@@ -112,8 +112,9 @@
     }
 
     function bukaPanel() {
+      // Ganti window.open jadi location.href
       var link = atob("aHR0cHM6Ly9wYW5lbC10ZWFteGlkb2ZmaWNpYWxsLnZpbm5wcml2YXQuY29t");
-      window.open(link, "_blank");
+      window.location.href = link;
     }
   </script>
 </body>
