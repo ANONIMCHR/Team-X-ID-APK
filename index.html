@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Team X-ID</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #2c003e, #1b1d4f, #5a003a);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      width: 90%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    .marquee {
+      margin-top: 10px;
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 10s linear infinite;
+    }
+    @keyframes marquee {
+      0%   { transform: translate(0, 0); }
+      100% { transform: translate(-100%, 0); }
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+    }
+    button {
+      width: 95%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      background-color: #6a00ff;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .cs-options {
+      display: flex;
+      justify-content: space-between;
+    }
+    .cs-options button {
+      background-color: #ff0059;
+      width: 48%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>WELCOME<br>MEMBER TEAM X-ID</h1>
+    <div class="marquee"><span id="running-text">Selamat datang di sistem Team X-ID Official!</span></div>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+
+    <button onclick="toggleCS()">Hubungi Customer Service</button>
+    <div id="cs-options" class="cs-options" style="display:none;">
+      <button onclick="window.open('https://wa.me/628123456789')">Via WhatsApp</button>
+      <button onclick="window.open('mailto:support@teamxid.com')">Via Email</button>
+    </div>
+  </div>
+
+  <script>
+    async function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      try {
+        const res = await fetch("https://raw.githubusercontent.com/ANONIMCHR/Project-apk1/main/Login/Login.json");
+        const data = await res.json();
+
+        const match = data.find(u => u.username === user && u.password === pass);
+
+        if (match) {
+          window.location.href = "panel.html";
+        } else {
+          alert("Username atau Password salah!");
+        }
+      } catch (err) {
+        alert("Gagal mengambil data login!");
+      }
+    }
+
+    function toggleCS() {
+      const el = document.getElementById("cs-options");
+      el.style.display = el.style.display === "none" ? "flex" : "none";
+    }
+  </script>
+</body>
+</html>
